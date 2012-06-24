@@ -1,4 +1,6 @@
 Notas::Application.routes.draw do
+  devise_for :users
+
   resources :notes
 
   # The priority is based upon order of creation:
