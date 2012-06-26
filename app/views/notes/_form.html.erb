@@ -1,22 +1,15 @@
 <% if current_user %>
-<%= form_for @note, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :title, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :content, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :content, :class => 'text_area' %>
-    </div>
-  </div>
+  <%= simple_form_for @note, :html => { :class => 'form-horizontal' } do |f| %>
+    <%= f.error_notification %>
+    <fieldset>
+      <%= f.input :title, :class => 'control-label' %>
+      <%= f.input :content, :class => 'control-label' %>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                notes_path, :class => 'btn' %>
-  </div>
-<% end %>
+      <div class="form-actions">
+        <%= f.submit nil, :class => 'btn btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+        notes_path, :class => 'btn' %>
+      </div>
+      <fieldset>
+  <% end %>
 <% end %>
