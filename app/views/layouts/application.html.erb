@@ -13,13 +13,14 @@
     <div class="container">
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
         <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </a>
       <a class="brand" href="#">Notas</a>
       <div class="nav-collapse">
         <ul class="nav">
-          <li> <%= link_to "Lista de notas", notes_path %> </li>
+          <li class="active"> <%= link_to "Lista de notas", root_path %> </li>
           <% if user_signed_in? %>
-            <li>Hola <%= current_user.email %></li>
             <li><%= link_to "Logout", destroy_user_session_path %></li>
           <% else %>
             <li><%= link_to "Login", new_user_session_path %></li>
@@ -29,10 +30,15 @@
     </div>
   </div>
 </div>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 
 <div class="container">
+  <% flash.each do |name, msg| %>
+    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+      <a class="close" data-dismiss="alert">x</a>
+      <%= msg %>
+    </div>
+  <% end %>
+
   <div class="row">
     <div class="span9">
       <%= yield %>

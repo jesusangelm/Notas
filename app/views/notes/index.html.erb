@@ -1,6 +1,10 @@
 <%- model_class = Note.new.class -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %> |
+  <% if user_signed_in? %>
+    <%= current_user.email %>
+  <% end %>
+</h1>
 </div>
 <table class="table table-striped">
   <thead>
